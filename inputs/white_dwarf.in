@@ -1,0 +1,91 @@
+#AthenaPK - a performance portable block structured AMR MHD code
+#Copyright(c) 2020, Athena Parthenon Collaboration.All rights reserved.
+#Licensed under the BSD 3 - Clause License(the "LICENSE");
+
+<comment> 
+problem = Type Ia Supernova
+
+<job>
+problem_id = white_dwarf
+
+<parthenon/mesh>
+refinement = adaptive 
+numlevel = 3
+nghost = 2
+
+nx1 = 128
+x1min = -20000.0e5 
+x1max = 20000.0e5 
+ix1_bc = periodic 
+ox1_bc = periodic
+
+nx2 = 128
+x2min = -20000.0e5 
+x2max = 20000.0e5 
+ix2_bc = periodic 
+ox2_bc = periodic
+
+nx3 = 128
+x3min = -20000.0e5 
+x3max = 20000.0e5 
+ix2_bc = periodic 
+ox2_bc = periodic
+
+<parthenon/refinement0>
+method = derivative_order_2
+field = cons 
+vector_i = 0
+refine_tol = 0.1 
+derefine_tol = 0.0375
+
+<parthenon/meshblock> 
+nx1 = 32
+nx2 = 32
+nx3 = 32
+
+<parthenon/output1> 
+file_type = hdf5 
+dt = 1e-2
+variables = cons
+
+<parthenon/output2>
+file_type = hst 
+dt = 1e-3
+
+<parthenon/output7> 
+file_type = rst 
+dt = 1e-2
+
+<parthenon/time> 
+integrator = rk2 
+cfl = 0.4 
+tlim = 10.0 
+nlim = 10000000
+
+<hydro> 
+eos = adiabatic
+riemann = hllc
+reconstruction = plm 
+gamma = 1.4
+scratch_level = 1
+
+<problem/white_dwarf>
+rho_central = 2.2e9 
+pres_central = 1.e10
+ign_temp = 1e10
+ign_radius = 1e8
+
+<utils/compute_edge> 
+dens_thresh = 1.e-2
+
+<gravity> 
+gravity_solver = monopole 
+num_bins = 100 
+newton_G = 6.6743e-8
+
+<eos>
+eos_type = helm
+
+<network>
+solver = nse
+MinNetworkTemp = 3e9

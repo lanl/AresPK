@@ -1,0 +1,73 @@
+# AthenaPK - a performance portable block structured AMR MHD code
+# Copyright (c) 2020, Athena Parthenon Collaboration. All rights reserved.
+# Licensed under the BSD 3-Clause License (the "LICENSE");
+
+<comment>
+problem = Rayleigh-Taylor Instability
+
+<job>
+problem_id = rt
+
+<parthenon/mesh>
+refinement = none
+nghost = 2
+
+nx1 = 256
+x1min = -0.75
+x1max = 0.75
+ix1_bc = reflecting
+ox1_bc = reflecting
+
+nx2 = 128
+x2min = -0.25
+x2max = 0.25
+ix2_bc = periodic
+ox2_bc = periodic
+
+nx3 = 1
+x3min = -0.25
+x3max = 0.25
+ix2_bc = periodic
+ox2_bc = periodic
+
+<parthenon/meshblock>
+nx1 = 16    
+nx2 = 16
+nx3 = 1
+
+<parthenon/output1>
+file_type = hdf5
+dt = 1.
+variables = prim
+
+<parthenon/output2>
+file_type = hst
+dt = 0.01
+
+<parthenon/output7>
+file_type = rst
+dt = 1.0
+
+<parthenon/time>
+integrator = rk1
+cfl = 0.4
+tlim = 20.
+nlim = 1000000000
+
+<hydro>
+eos = adiabatic
+riemann = hllc
+reconstruction = plm
+gamma = 1.4
+
+<eos>
+eos_type = ideal
+gm1 = 0.4
+Cv = 1.5
+
+<gravity>
+gravity_solver = constant
+grav_accel = 0.1
+
+<problem/rt>
+pert_mode = none

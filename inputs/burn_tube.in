@@ -1,0 +1,72 @@
+<comment>
+problem = Burning tube
+
+<job>
+problem_id = burn_tube
+
+<problem/burn_tube>
+rho_l     = 1.0e7
+pres_l    = 1.0
+u_l       = 0.0
+rho_r     = 1.0
+pres_r    = 1.0
+u_r       = 0.0
+x_ign = 0.5
+x_ign_width = 0.0125
+
+temp_ign = 8.0e9
+temp_background = 1e8
+
+<parthenon/mesh>
+refinement = none
+nghost = 2
+
+nx1 = 128
+x1min = 0.0
+x1max = 1.0
+ix1_bc = outflow
+ox1_bc = outflow
+
+nx2 = 32 
+x2min = 0.0
+x2max = 1.0
+ix3_bc = periodic
+ox3_bc = periodic
+
+nx3 = 1
+x3min = -0.5
+x3max = 0.5
+ix2_bc = periodic
+ox2_bc = periodic
+
+<parthenon/meshblock>
+nx1 = 128
+nx2 = 32
+nx3 = 1
+
+<parthenon/output1>
+file_type = hdf5
+dt = 1.0e-10
+variables = cons, prim
+
+<parthenon/time>
+integrator = rk1
+cfl = 0.5
+tlim = 0.000010
+nlim = 2
+
+<hydro>
+riemann = hllc
+reconstruction = plm
+scratch_level = 1
+
+<eos>
+eos_type = ideal
+
+<network>
+solver = nse
+MinNetworkTemp = 3e9
+
+<parthenon/Graphics>
+variables = cons
+

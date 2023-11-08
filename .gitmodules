@@ -1,0 +1,13 @@
+[submodule "external/Kokkos"]
+  path = external/Kokkos
+  url = https://github.com/kokkos/kokkos.git
+[submodule "external/parthenon"]
+  path = external/parthenon
+  url = https://github.com/lanl/parthenon.git
+[submodule "external/singularity-eos"]
+	path = external/singularity-eos
+	url = https://github.com/lanl/singularity-eos
+	branch = jmm/helmholtz
+[submodule "external/plog"]
+	path = external/plog
+	url = https://github.com/SergiusTheBest/plog.git
