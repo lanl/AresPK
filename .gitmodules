@@ -6,7 +6,7 @@
 	url = https://github.com/parthenon-hpc-lab/parthenon
 [submodule "external/singularity-eos"]
 	path = external/singularity-eos
-	url = https://github.com/lanl/singularity-eos
+	url = git@github.com:lanl/singularity-eos.git
 	branch = jmm/helmholtz
 [submodule "external/plog"]
 	path = external/plog
