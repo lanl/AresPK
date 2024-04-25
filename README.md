@@ -61,8 +61,8 @@ Neither other versions or nor using preinstalled Parthenon/Kokkos libraries have
 
 Obtain all (Ares, Parthenon, and Kokkos) sources
 
-    git clone https://github.com/pgrete/parthenon-hydro
-    cd parthenon-hydro
+    git clone https://github.com/lanl/AresPK.git
+    cd AresPK
 
     # get submodules (mainly Kokkos and Parthenon)
     git submodule init
