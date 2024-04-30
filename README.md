@@ -1,6 +1,6 @@
 # Ares
 
-`Ares` is a finite volume, compressible hydrodynamics sample implementation using the
+`Ares` (also called AresPK to avoid conflict with existing Ares repo under LANL) is a finite volume, compressible hydrodynamics sample implementation using the
 performance portable adaptive mesh framework [Parthenon](https://github.com/lanl/parthenon) and [Kokkos](https://github.com/kokkos/kokkos).
 It is effectively a simplified version of [AthenaPK](https://gitlab.com/theias/hpc/jmstone/athena-parthenon/athenapk)
 demonstrating the use of the Parthenon interfaces (including the testing framework) with a use-case that is more complex
