@@ -69,7 +69,7 @@ endmacro(configure_files)
 # Configure data directory
 configure_files(${CMAKE_CURRENT_SOURCE_DIR}/data data)
 
-set(Kokkos_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/external/Kokkos)
+set(Kokkos_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/external/kokkos)
 
 option(Ares_ENABLE_TESTING "Enable Ares test" ON)
 set(PARTHENON_ENABLE_PYTHON_MODULE_CHECK ${Ares_ENABLE_TESTING} CACHE BOOL "Check if local python version contains all modules required for running tests.")
@@ -93,10 +93,10 @@ if (NOT PARTHENON_DISABLE_MPI)
   set(ENABLE_MPI ON)
 endif()
 
-if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/external/Kokkos/CMakeLists.txt)
-  add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/external/Kokkos Kokkos)
+if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/external/kokkos/CMakeLists.txt)
+  add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/external/kokkos kokkos)
 else()
-  find_package(Kokkos REQUIRED)
+  find_package(kokkos REQUIRED)
 endif()
 
 if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/external/parthenon/CMakeLists.txt)
